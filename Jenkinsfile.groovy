@@ -2,11 +2,17 @@ pipeline {
     agent any
 
     stages {
-
-        stage("Build") {
-            withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn']) {
-                bat '$YARN_HOME/bin'
+        stage('Prepare') {
+            sh "npm install -g yarn"
+            sh "yarn install"
+        }
+        withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn/bin']) {
+            stage('Prepare') {
+                bat "npm install -g yarn"
+                bat "yarn install"
             }
+        }
+        stage("Build") {
             steps {
                 bat " cd C:/Users/maiga/Downloads/accenture_advanced_software_engineering/mock-company-webapp"
                 echo "Building Stage Start"
@@ -15,9 +21,6 @@ pipeline {
             }
         }
         stage("Test") {
-            withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn']) {
-                bat '$YARN_HOME/bin'
-            }
             steps {
                 echo "Testing Stage Start"
                 bat "./gradlew test"
