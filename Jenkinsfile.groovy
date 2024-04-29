@@ -12,7 +12,6 @@ pipeline {
             steps {
                 echo "Testing Stage Start"
                 bat "./gradlew test"
-                echo "Testing Stage End"
             }
         }
     }
