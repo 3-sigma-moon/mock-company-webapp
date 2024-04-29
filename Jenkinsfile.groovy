@@ -10,7 +10,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Building Stage Start"
-                bat "./gradlew assemble"
+                bat "./gradlew assemble --stacktrace"
                 echo "Building Stage End"
             }
         }
