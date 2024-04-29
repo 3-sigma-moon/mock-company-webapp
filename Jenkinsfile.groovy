@@ -3,13 +3,19 @@ pipeline {
 
     stages {
         stage('Prepare') {
-            sh "npm install -g yarn"
-            sh "yarn install"
+            steps {
+                sh "npm install -g yarn"
+                sh "yarn install"
+            }
+
         }
         withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn/bin']) {
             stage('Prepare') {
-                bat "npm install -g yarn"
-                bat "yarn install"
+                steps {
+                    bat "npm install -g yarn"
+                    bat "yarn install"
+                }
+
             }
         }
         stage("Build") {
