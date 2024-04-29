@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    node {
-        withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn']) {
-            bat '$YARN_HOME/bin'
-        }
-    }
+//    node {
+//        withEnv(['YARN_HOME=C:/Users/maiga/AppData/Roaming/npm/node_modules/yarn']) {
+//            bat '$YARN_HOME/bin'
+//        }
+//    }
     stages {
 
         stage("Build") {
