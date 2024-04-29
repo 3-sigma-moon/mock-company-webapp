@@ -1,15 +1,21 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Build"){
-            steps{
+    stages {
+        stage("Install") {
+            steps {
+                bat "npm i -g yarn"
+                bat "npm i -l yarn"
+            }
+        }
+        stage("Build") {
+            steps {
                 echo "Building Stage Start"
                 bat "./gradlew assemble"
                 echo "Building Stage End"
             }
         }
-        stage("Test"){
-            steps{
+        stage("Test") {
+            steps {
                 echo "Testing Stage Start"
                 bat "./gradlew test"
                 echo "Testing Stage End"
